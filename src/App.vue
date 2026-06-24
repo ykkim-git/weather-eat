@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useRestaurantStore } from './stores/restaurantStore'
+import { onMounted } from "vue";
+import { useweatherEatStore } from "./stores/weatherEatStore";
 
-const restaurantStore = useRestaurantStore()
+const weatherEatStore = useweatherEatStore();
 
 onMounted(() => {
-  restaurantStore.fetchRestaurants()
-})
+  weatherEatStore.fetchRestaurants();
+});
 </script>
 
 <template>
@@ -18,16 +18,14 @@ onMounted(() => {
 
     <main class="container">
       <section class="stats">
-        <p>총 {{ restaurantStore.restaurantCount }}개의 맛집</p>
+        <p>총 {{ weatherEatStore.restaurantCount }}개의 맛집</p>
       </section>
 
-      <div v-if="restaurantStore.loading" class="loading">
-        로딩 중...
-      </div>
+      <div v-if="weatherEatStore.loading" class="loading">로딩 중...</div>
 
       <div v-else class="restaurants-grid">
         <div
-          v-for="restaurant in restaurantStore.restaurants"
+          v-for="restaurant in weatherEatStore.restaurants"
           :key="restaurant.id"
           class="restaurant-card"
         >
@@ -38,7 +36,11 @@ onMounted(() => {
         </div>
       </div>
 
-      <div v-if="restaurantStore.restaurants.length === 0 && !restaurantStore.loading">
+      <div
+        v-if="
+          weatherEatStore.restaurants.length === 0 && !weatherEatStore.loading
+        "
+      >
         <p>아직 등록된 맛집이 없습니다.</p>
       </div>
     </main>
@@ -100,7 +102,9 @@ onMounted(() => {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .restaurant-card:hover {

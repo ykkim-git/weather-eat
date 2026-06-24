@@ -25,7 +25,7 @@ export interface Restaurant {
   createdAt: Date;
 }
 
-export const useRestaurantStore = defineStore("restaurant", () => {
+export const useweatherEatStore = defineStore("restaurant", () => {
   const restaurants = ref<Restaurant[]>([]);
   const loading = ref(false);
   const error = ref<string | null>(null);
