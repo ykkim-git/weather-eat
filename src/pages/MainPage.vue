@@ -238,7 +238,6 @@ $tag-color: #c0708a;
 
 .bg-app {
   height: 100%;
-  min-height: 1080px;
   background: $cream;
   display: flex;
   justify-content: center;
@@ -247,7 +246,6 @@ $tag-color: #c0708a;
 .app {
   width: 100%;
   max-width: 430px;
-  min-height: 1080px;
   display: flex;
   flex-direction: column;
   position: relative;
